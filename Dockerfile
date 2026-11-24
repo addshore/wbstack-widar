@@ -1,11 +1,11 @@
-FROM composer:2.8 AS composer
+FROM composer:2.11 AS composer
 
 WORKDIR /installing
 COPY ./ /installing
 RUN composer install --no-dev --no-progress --no-autoloader && rm -rf vendor
 
 
-FROM php:8.1-apache
+FROM php:8.5.13-apache-trixie
 
 LABEL org.opencontainers.image.source="https://github.com/wbstack/widar"
 
